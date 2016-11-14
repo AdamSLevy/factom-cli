@@ -1,5 +1,5 @@
 hash: 0462d599ed7494ea9a507e32aa6aaf7e7c921e9b07dffb074a31b511a5f89a81
-updated: 2016-11-14T11:11:34.544143334-05:00
+updated: 2016-11-14T11:19:01.319912286-05:00
 imports:
 - name: github.com/btcsuitereleases/btcutil
   version: f2b1058a82554c0c7c3b8809c5956c38374604d8
