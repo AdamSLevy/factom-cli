@@ -20,12 +20,12 @@ import:
 - package: github.com/FactomProject/ed25519
   version: master
 - package: github.com/FactomProject/factom
-  version: 6536534bba71542f3e39fe19a78762202680b4df
+  version: m2
   subpackages:
   - wallet
   - wallet/wsapi
 - package: github.com/FactomProject/factomd
-  version: m2-friday
+  version: m2
   subpackages:
   - util
 - package: github.com/FactomProject/go-bip32
