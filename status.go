@@ -17,8 +17,8 @@ import (
 var status = func() *fctCmd {
 	cmd := new(fctCmd)
 	cmd.helpMsg = "factom-cli status TxID|FullTx"
-	cmd.description = "Returns information about a factoid transaction, or an" +
-		" entry / entry credit transaction"
+	cmd.description = "Returns information about a Factoid Transaction, or an" +
+		" Entry / Entry Credit Transaction"
 	cmd.execFunc = func(args []string) {
 		os.Args = args
 		tdisp := flag.Bool("T", false, "display the transaction id only")
