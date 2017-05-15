@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/FactomProject/factom"
 	"errors"
+	"github.com/FactomProject/factom"
 )
 
 // exidCollector accumulates the external ids from the command line -e and -E
@@ -115,51 +115,51 @@ func nametoid(name [][]byte) string {
 // waitOnFctAck blocks while waiting for a factom ack message and returns the
 // ack status or times out after 10 seconds.
 func waitOnFctAck(txid string) (string, error) {
-		for i :=0; i < 120; i++ {
-			s, err := factom.FactoidACK(txid, "")
-			if err != nil {
-				time.Sleep(time.Second / 2)
-				continue
-			}
-			if (s.Status != "Unknown") && (s.Status != "NotConfirmed") {
-				return s.Status, nil
-			}
+	for i := 0; i < 120; i++ {
+		s, err := factom.FactoidACK(txid, "")
+		if err != nil {
 			time.Sleep(time.Second / 2)
+			continue
 		}
+		if (s.Status != "Unknown") && (s.Status != "NotConfirmed") {
+			return s.Status, nil
+		}
+		time.Sleep(time.Second / 2)
+	}
 
-		return "", errors.New("timeout: no acknowledgement found")
+	return "", errors.New("timeout: no acknowledgement found")
 }
 
 // waitOnCommitAck blocks while waiting for an ack message for an Entry Commit
 // and returns the ack status or times out after 10 seconds.
 func waitOnCommitAck(txid string) (string, error) {
-	for i :=0; i < 120; i++ {
-			s, err := factom.EntryACK(txid, "")
-			if err != nil {
-				time.Sleep(time.Second / 2)
-				continue
-			}
-			if (s.CommitData.Status != "Unknown") && (s.CommitData.Status != "NotConfirmed") {
-				return s.CommitData.Status, nil
-			}
+	for i := 0; i < 120; i++ {
+		s, err := factom.EntryACK(txid, "")
+		if err != nil {
 			time.Sleep(time.Second / 2)
+			continue
 		}
-		return "", errors.New("timeout: no acknowledgement found")
+		if (s.CommitData.Status != "Unknown") && (s.CommitData.Status != "NotConfirmed") {
+			return s.CommitData.Status, nil
+		}
+		time.Sleep(time.Second / 2)
+	}
+	return "", errors.New("timeout: no acknowledgement found")
 }
 
 // waitOnRevealAck blocks while waiting for an ack message for an Entry Reveal
 // and returns the ack status or times out after 10 seconds.
 func waitOnRevealAck(txid string) (string, error) {
-	for i :=0; i < 120; i++ {
-			s, err := factom.EntryACK(txid, "")
-			if err != nil {
-				time.Sleep(time.Second / 2)
-				continue
-			}
-			if (s.EntryData.Status != "Unknown") && (s.EntryData.Status != "NotConfirmed") {
-				return s.EntryData.Status, nil
-			}
+	for i := 0; i < 120; i++ {
+		s, err := factom.EntryACK(txid, "")
+		if err != nil {
 			time.Sleep(time.Second / 2)
+			continue
 		}
-		return "", errors.New("timeout: no acknowledgement found")
+		if (s.EntryData.Status != "Unknown") && (s.EntryData.Status != "NotConfirmed") {
+			return s.EntryData.Status, nil
+		}
+		time.Sleep(time.Second / 2)
+	}
+	return "", errors.New("timeout: no acknowledgement found")
 }

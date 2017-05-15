@@ -21,7 +21,7 @@ imports:
   subpackages:
   - edwards25519
 - name: github.com/FactomProject/factom
-  version: 960853f9f2038b53662eb9ad25d895e3545f140a
+  version: e04ed096a2ab3a06219c5ee771346bbd09f56948
   subpackages:
   - wallet
   - wallet/wsapi
