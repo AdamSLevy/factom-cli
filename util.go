@@ -158,8 +158,10 @@ func waitOnCommitAck(txid string) (string, error) {
 		for {
 			s, err := factom.EntryACK(txid, "")
 			if err != nil {
-				errchan <- err
-				break
+				//errchan <- err
+				//break
+				time.Sleep(time.Second / 2)
+				continue
 			}
 			if (s.CommitData.Status != "Unknown") && (s.CommitData.Status != "NotConfirmed") {
 				stat <- s.CommitData.Status
@@ -194,8 +196,8 @@ func waitOnRevealAck(txid string) (string, error) {
 		for {
 			s, err := factom.EntryACK(txid, "")
 			if err != nil {
-				errchan <- err
-				break
+				time.Sleep(time.Second / 2)
+				continue
 			}
 			if (s.EntryData.Status != "Unknown") && (s.EntryData.Status != "NotConfirmed") {
 				stat <- s.EntryData.Status
