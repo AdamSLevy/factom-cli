@@ -469,8 +469,8 @@ var getPendingTransactions = func() *fctCmd {
 	}
 
 	cmd := new(fctCmd)
-	cmd.helpMsg = "factom-cli get pendingtransactions [-T]"
-	cmd.description = "Get all pending factoid transacitons, which may not yet be written to blockchain. -T TxID."
+	cmd.helpMsg = "factom-cli get pendingtransactions ADDRESS [FCTADDRESS/ECADDRESS] -T [TxID...]"
+	cmd.description = "Get all pending factoid transacitons, which may not yet be written to blockchain.  ADDRESS FAxxx. -T TxID. "
 	cmd.execFunc = func(args []string) {
 		os.Args = args
 		tdisp := flag.Bool(
